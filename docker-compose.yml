@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+ appdb:
+  image: mariadb
+  volumes:
+   - ./data/appdb:/var/lib/mysql
+  #restart: always
+  environment:
+   MYSQL_ROOT_PASSWORD: rootpassword
+   MYSQL_DATABASE: homestead
+   MYSQL_USER: homestead
+   MYSQL_PASSWORD: secret
+
+ webpress:
+  build: webpress
+  depends_on:
+   - appdb
+  ports:
+   - "9090:80"
+  #restart: always
+  volumes:
+   - ./data/webpress/webpress:/var/www/html
+   - ./data/webpress/ap2log:/var/log/apache2

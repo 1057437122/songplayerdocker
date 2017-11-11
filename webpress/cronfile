@@ -1,0 +1,4 @@
+#37 23 * * * /dbbk.sh
+* * * * * php /var/www/html/artisan schedule:run >> /dev/null 2>&1
+*/5 * * * * /usr/sbin/ntpdate  0.pool.ntp.org
+#*/5 * * * * /checkapache2.sh
